@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Gregory Ivanyuk Test App</string>
+    <string name="location">Write to File permission is required to run the App</string>
+    <string name="title_activity_start">StartActivity</string>
+    <string name="first_field">поле для ввода числа точек</string>
+    <string name="first_button">Поехали</string>
+    <string name="dash">-</string>
+
+    <string name="viewHH">View on HH</string>
+    <string name="actionToggleValues">Toggle Values</string>
+    <string name="actionToggleIcons">Toggle Icons</string>
+    <string name="actionToggleFilled">Toggle Filled</string>
+    <string name="actionToggleCircles">Toggle Circles</string>
+    <string name="actionToggleStepped">Toggle Stepped</string>
+    <string name="actionToggleHorizontalCubic">Toggle Horizontal Cubic</string>
+    <string name="actionTogglePinch">Toggle PinchZoom</string>
+    <string name="actionToggleAutoScale">Toggle Auto Scale</string>
+    <string name="actionSave">Save to Gallery</string>
+    <string name="actionToggleHighlight">Toggle Highlight</string>
+
+    <string name="actionToggleCubic">Toggle Cubic</string>
+
+    <string name="animateX">Animate X</string>
+    <string name="animateY">Animate Y</string>
+    <string name="animateXY">Animate XY</string>
+
+    <string name="info_text">блок информационного текста\nблок информационного текста\nблок информационного текста\nблок информационного текста\nблок информационного текста\nблок информационного текста</string>
+</resources>
