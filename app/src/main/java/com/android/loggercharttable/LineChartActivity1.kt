@@ -63,7 +63,7 @@ class LineChartActivity1 : DemoBase(), OnChartValueSelectedListener {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
         if (intent.getStringExtra("orientation")=="land") {
-            requestedOrientation=ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+            requestedOrientation=ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
         } else if (intent.getStringExtra("orientation")=="port") {
             requestedOrientation=ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
