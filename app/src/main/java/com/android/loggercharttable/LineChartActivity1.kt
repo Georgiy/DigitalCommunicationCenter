@@ -4,6 +4,7 @@ package com.android.loggercharttable
 
 import android.Manifest
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.DashPathEffect
@@ -54,7 +55,6 @@ class LineChartActivity1 : DemoBase(), OnChartValueSelectedListener {
     internal var points_count: String? = null
     internal var result: Int = 0
     private lateinit var response_model:List<Point>
-    var layoutId = R.layout.activity_linechart
     val tableLayout by lazy { TableLayout(this) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,7 +62,12 @@ class LineChartActivity1 : DemoBase(), OnChartValueSelectedListener {
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
-        setContentView(layoutId)
+        if (intent.getStringExtra("orientation")=="land") {
+            requestedOrientation=ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        } else if (intent.getStringExtra("orientation")=="port") {
+            requestedOrientation=ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        }
+        setContentView(R.layout.activity_linechart)
         //setContentView(R.layout.activity_linechart)
         points_count = intent.getStringExtra("points_number")
         result = Integer.parseInt(points_count!!)
