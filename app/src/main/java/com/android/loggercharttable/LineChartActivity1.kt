@@ -11,7 +11,11 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.TableLayout
+import android.widget.TableRow
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.github.mikephil.charting.animation.Easing
@@ -26,6 +30,7 @@ import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 import com.google.gson.GsonBuilder
+import kotlinx.android.synthetic.main.activity_linechart.*
 import okhttp3.*
 import org.json.JSONException
 import org.json.JSONObject
@@ -49,13 +54,16 @@ class LineChartActivity1 : DemoBase(), OnChartValueSelectedListener {
     internal var points_count: String? = null
     internal var result: Int = 0
     private lateinit var response_model:List<Point>
+    var layoutId = R.layout.activity_linechart
+    val tableLayout by lazy { TableLayout(this) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
-        setContentView(R.layout.activity_linechart)
+        setContentView(layoutId)
+        //setContentView(R.layout.activity_linechart)
         points_count = intent.getStringExtra("points_number")
         result = Integer.parseInt(points_count!!)
         callGetPoints()
@@ -170,6 +178,7 @@ class LineChartActivity1 : DemoBase(), OnChartValueSelectedListener {
                 if (text_toast!="") {
                     val toast = Toast.makeText(applicationContext,text_toast, Toast.LENGTH_LONG)
                     toast.show()
+                    finish()
                     //toast.setGravity(Gravity.CENTER_HORIZONTAL or Gravity.CENTER_VERTICAL, 0, 0)
                 }
             })
@@ -222,7 +231,30 @@ class LineChartActivity1 : DemoBase(), OnChartValueSelectedListener {
                                 // draw legend entries as lines
                                 l.form = LegendForm.LINE
                                     //creating adapter
+                                    val lp = TableLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+                                    tableLayout.apply {
+                                        layoutParams = lp
+                                        isShrinkAllColumns = true
+                                    }
+                                    for (i in 0 until result) {
 
+                                        val row = TableRow(applicationContext)
+                                        row.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                                            ViewGroup.LayoutParams.WRAP_CONTENT)
+
+                                        for (j in 0 until 1) {
+                                            val count_number = i+1
+                                            val text_view = TextView(applicationContext)
+                                            text_view.apply {
+                                                layoutParams = TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
+                                                    TableRow.LayoutParams.WRAP_CONTENT)
+                                                text = "Точка :"+count_number.toString()+" X : "+sortedList[i].x.toString()+" Y : "+sortedList[i].y.toShort()
+                                            }
+                                            row.addView(text_view)
+                                        }
+                                        tableLayout.addView(row)
+                                    }
+                                    linearLayout.addView(tableLayout)
                                 })
 
                             }).start()
