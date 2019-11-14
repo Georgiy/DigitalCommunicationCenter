@@ -14,5 +14,7 @@
 
 К сожалению, в описании задания не было сказано про ошибку подленности сертификата SSL, пришлось искать обходное решение
 
+When cloning this project from github don't forget to Sync Project with Gradle Files
+
 Special Thanks to creator of the following lib which is used for this test:
 https://github.com/PhilJay/MPAndroidChart
