@@ -216,7 +216,6 @@ class LineChartActivity1 : DemoBase(), OnChartValueSelectedListener {
                     try {
                         if (result_value==0) {
                             //Log.i("POINTS",response_model.toString())
-                            //Log.i("POINTS",sortedList.toString())
                             // add data
                             for (i in response_model.indices) {
                                 values.add(Entry(response_model[i].x, response_model[i].y))
