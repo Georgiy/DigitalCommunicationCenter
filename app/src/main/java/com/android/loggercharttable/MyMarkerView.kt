@@ -11,11 +11,6 @@ import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.utils.MPPointF
 import com.github.mikephil.charting.utils.Utils
 
-/**
- * Custom implementation of the MarkerView.
- *
- * @author Philipp Jahoda
- */
 @SuppressLint("ViewConstructor")
 class MyMarkerView(context: Context, layoutResource: Int) : MarkerView(context, layoutResource) {
 

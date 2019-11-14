@@ -45,12 +45,6 @@ import javax.net.ssl.SSLContext
 import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
 
-/**
- * Example of a heavily customized [LineChart] with limit lines, custom line shapes, etc.
- *
- * @since 1.7.4
- * @version 3.1.0
- */
 class LineChartActivity1 : DemoBase(), OnChartValueSelectedListener {
     private val values = ArrayList<Entry>()
     private var okHttpClient = OkHttpClient()

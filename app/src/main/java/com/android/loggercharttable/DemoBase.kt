@@ -12,11 +12,6 @@ import androidx.core.app.ActivityCompat
 import com.github.mikephil.charting.charts.Chart
 import com.google.android.material.snackbar.Snackbar
 
-/**
- * Base class of all Activities of the Demo Application.
- *
- * @author Philipp Jahoda
- */
 abstract class DemoBase : AppCompatActivity(), ActivityCompat.OnRequestPermissionsResultCallback {
 
     protected lateinit var tfRegular: Typeface
