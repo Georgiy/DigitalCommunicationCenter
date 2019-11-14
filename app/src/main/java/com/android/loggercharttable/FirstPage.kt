@@ -34,4 +34,9 @@ class FirstPage : AppCompatActivity() {
 
         }
     }
+
+/*    override fun onResume() {
+        super.onResume()
+        Handler().postDelayed({ first_button.performClick() }, 2000)
+    }*/
 }

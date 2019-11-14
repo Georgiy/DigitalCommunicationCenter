@@ -1,4 +1,4 @@
-package com.android.loggercharttable
+package com.android.loggercharttable.dataclasses
 
 data class ErrorResponse(
     val response: ResponseX

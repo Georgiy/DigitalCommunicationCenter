@@ -19,6 +19,9 @@ import android.widget.TableRow
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import com.android.loggercharttable.dataclasses.ErrorResponse
+import com.android.loggercharttable.dataclasses.POSTResult
+import com.android.loggercharttable.dataclasses.Point
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.Legend.LegendForm
@@ -74,6 +77,7 @@ class LineChartActivity1 : DemoBase(), OnChartValueSelectedListener {
         callGetPoints()
         title = "Gregory Ivanyuk Test App"
         drawingFun()
+        //Handler().postDelayed({ onBackPressed()  },5000)
     }
     private fun drawingFun() {
         run {
@@ -211,23 +215,21 @@ class LineChartActivity1 : DemoBase(), OnChartValueSelectedListener {
             override fun onResponse(call: Call, response: okhttp3.Response) {
                 try {
                     val responseData = response.body()!!.string()
+                    val jsonObject = JSONObject(responseData)
+                    val result_value = gson.fromJson(jsonObject.toString(), POSTResult::class.java).result
+                    response_model = gson.fromJson(jsonObject.toString(), POSTResult::class.java).response.points.sortedWith(compareByDescending{ it.x }).reversed()
                     //insurance_list.clear()
                     try {
-                        val jsonObject = JSONObject(responseData)
-                        val result_value = gson.fromJson(jsonObject.toString(), POSTResult::class.java).result
                         if (result_value==0) {
-                            response_model = gson.fromJson(jsonObject.toString(), POSTResult::class.java).response.points
-                            val sortedList = response_model.sortedWith(compareByDescending{ it.x }).reversed()
                             //Log.i("POINTS",response_model.toString())
                             //Log.i("POINTS",sortedList.toString())
                             // add data
-                            for (i in sortedList.indices) {
-                                values.add(Entry(sortedList[i].x, sortedList[i].y))
+                            for (i in response_model.indices) {
+                                values.add(Entry(response_model[i].x, response_model[i].y))
                             }
                             Thread(Runnable {
                             // try to touch View of UI thread
                                 runOnUiThread(java.lang.Runnable {
-
                                 setData()
                                 // draw points over time
                                 chart!!.animateX(1500)
@@ -253,7 +255,7 @@ class LineChartActivity1 : DemoBase(), OnChartValueSelectedListener {
                                             text_view.apply {
                                                 layoutParams = TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
                                                     TableRow.LayoutParams.WRAP_CONTENT)
-                                                text = "Точка :"+count_number.toString()+" X : "+sortedList[i].x.toString()+" Y : "+sortedList[i].y.toShort()
+                                                text = "Точка :"+count_number.toString()+" X : "+response_model[i].x.toString()+" Y : "+response_model[i].y.toShort()
                                             }
                                             row.addView(text_view)
                                         }
