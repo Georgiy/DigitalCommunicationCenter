@@ -36,6 +36,7 @@
         android:singleLine="true"
         android:inputType="numberDecimal"
         android:maxLength="3"
+        android:text="200"
         android:hint="@string/first_field" />
     <Button
         android:id="@+id/first_button"
