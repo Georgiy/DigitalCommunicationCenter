@@ -51,7 +51,7 @@ class LineChartActivity1 : DemoBase(), OnChartValueSelectedListener {
     private var chart: LineChart? = null
     internal var points_count: String? = null
     internal var result: Int = 0
-    private lateinit var response_model:List<Point>
+    private var response_model:List<Point>?=null
     val tableLayout by lazy { TableLayout(this) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -217,8 +217,8 @@ class LineChartActivity1 : DemoBase(), OnChartValueSelectedListener {
                         if (result_value==0) {
                             //Log.i("POINTS",response_model.toString())
                             // add data
-                            for (i in response_model.indices) {
-                                values.add(Entry(response_model[i].x, response_model[i].y))
+                            for (i in response_model!!.indices) {
+                                values.add(Entry(response_model!![i].x, response_model!![i].y))
                             }
                             Thread(Runnable {
                             // try to touch View of UI thread
@@ -248,7 +248,7 @@ class LineChartActivity1 : DemoBase(), OnChartValueSelectedListener {
                                             text_view.apply {
                                                 layoutParams = TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
                                                     TableRow.LayoutParams.WRAP_CONTENT)
-                                                text = "Точка :"+count_number.toString()+" X : "+response_model[i].x.toString()+" Y : "+response_model[i].y.toShort()
+                                                text = "Точка :"+count_number.toString()+" X : "+response_model!![i].x.toString()+" Y : "+response_model!![i].y.toShort()
                                             }
                                             row.addView(text_view)
                                         }
