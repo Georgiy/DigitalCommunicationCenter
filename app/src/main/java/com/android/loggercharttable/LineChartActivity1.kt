@@ -65,7 +65,6 @@ class LineChartActivity1 : DemoBase(), OnChartValueSelectedListener {
             requestedOrientation=ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
         setContentView(R.layout.activity_linechart)
-        //setContentView(R.layout.activity_linechart)
         points_count = intent.getStringExtra("points_number")
         result = Integer.parseInt(points_count!!)
         callGetPoints()
@@ -191,7 +190,6 @@ class LineChartActivity1 : DemoBase(), OnChartValueSelectedListener {
         val JSON = MediaType.parse("application/json; charset=utf-8")
         val gson = GsonBuilder().setPrettyPrinting().create()
         val precalc = "{}"
-        //val precalc = PATCH_BODY(valid_from = insurance_issue_date.text.toString(),valid_to = SharedPreferenceHelper.getSharedPreferencesString(context!!,"insurance_end_date",""))
         val jsonPrecalc: String = gson.toJson(precalc)
         val body = RequestBody.create(JSON, jsonPrecalc)
         val okHttpClient = getUnsafeOkHttpClient().build()
@@ -212,7 +210,6 @@ class LineChartActivity1 : DemoBase(), OnChartValueSelectedListener {
                     val jsonObject = JSONObject(responseData)
                     val result_value = gson.fromJson(jsonObject.toString(), POSTResult::class.java).result
                     response_model = gson.fromJson(jsonObject.toString(), POSTResult::class.java).response.points.sortedWith(compareByDescending{ it.x }).reversed()
-                    //insurance_list.clear()
                     try {
                         if (result_value==0) {
                             //Log.i("POINTS",response_model.toString())
