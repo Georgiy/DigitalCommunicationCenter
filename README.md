@@ -18,3 +18,8 @@ When cloning this project from github don't forget to Sync Project with Gradle F
 
 Special Thanks to creator of the following lib which is used for this test:
 https://github.com/PhilJay/MPAndroidChart
+
+![device-2019-11-14-162211](https://user-images.githubusercontent.com/1628338/68860928-866bef80-06fb-11ea-9e6f-b0549303b3d7.png)
+![device-2019-11-14-162231](https://user-images.githubusercontent.com/1628338/68860929-87048600-06fb-11ea-8930-c5134c78fe47.png)
+![device-2019-11-14-162112](https://user-images.githubusercontent.com/1628338/68860930-87048600-06fb-11ea-8234-1d1002ca6418.png)
+![device-2019-11-14-162135](https://user-images.githubusercontent.com/1628338/68860932-879d1c80-06fb-11ea-8962-a059b7215d18.png)
